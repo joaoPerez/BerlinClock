@@ -9,7 +9,7 @@ namespace BerlinClock
 {
     public class TimeConverter : ITimeConverter
     {
-        IBerlinClockService berlinClockService = new BerlinClockService();
+        private readonly IBerlinClockService berlinClockService = new BerlinClockService();
 
         public string convertTime(string aTime)
         {

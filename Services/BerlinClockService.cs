@@ -1,4 +1,6 @@
 ﻿using BerlinClock.Models;
+using BerlinClock.Validators;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +13,9 @@ namespace BerlinClock.Services
     {
         public string GetBerlinClock(BerlinClockInputModel input)
         {
+            BerlinClockInputModelValidator clockValidator = new BerlinClockInputModelValidator();
+            clockValidator.ValidateAndThrow(input);
+
             // Hours
             var hourDictionary = GetLampState(input.hour);
             int firstRowQuant = hourDictionary["first"];
